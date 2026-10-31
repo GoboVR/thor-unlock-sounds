@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Move sounds into res/raw
+        run: |
+          mkdir -p app/src/main/res/raw
+          [ -d app/src/main/raw ] && mv app/src/main/raw/*.mp3 app/src/main/res/raw/ || true
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
